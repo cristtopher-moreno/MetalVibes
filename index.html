@@ -524,15 +524,14 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "FORJANDO REGISTRO...";
 
-            const leadData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                interest: document.getElementById('interest').value,
-                timestamp: serverTimestamp(),
-                userId: userUid
-            };
+const leadData = {
+    name: document.getElementById('name')?.value || "No proporcionado",
+    email: document.getElementById('email')?.value || "No proporcionado",
+    phone: document.getElementById('phone')?.value || "Sin teléfono",
+    interest: document.getElementById('interest')?.value || "General",
+    timestamp: serverTimestamp(),
+    userId: userUid
+};
 
             try {
                 // Registro seguro en la ruta específica del sistema
