@@ -27,7 +27,11 @@
                         'sans': ['Inter', 'sans-serif'],
                     }
                 }
-            }
+           :root {
+    --metal-accent: #a78bfa;
+    --metal-dark: #0a0a0a;
+}
+        }
         }
     </script>
     <style>
@@ -288,13 +292,11 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label class="block text-xs font-mono text-metal-accent uppercase">Nombres</label>
-                                <input 
-                                    id="firstName"
-                                    required
-                                    type="text" 
-                                    placeholder="Ej: Lemmy"
-                                    class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
-                                >
+                                <input type="text" 
+                                    id="name" 
+                                    placeholder="Tu nombre metalero" 
+                                    required aria-label="Nombre completo" 
+                                    class="w-full bg-metal-gray border border-white/10 rounded-lg px-4 py-3 text-white font-mono focus:outline-none focus:border-metal-accent transition-colors">
                             </div>
                             <div class="space-y-2">
                                 <label class="block text-xs font-mono text-metal-accent uppercase">Apellidos</label>
@@ -311,13 +313,11 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label class="block text-xs font-mono text-metal-accent uppercase">Correo del Abismo</label>
-                                <input 
-                                    id="email"
-                                    required
-                                    type="email" 
-                                    placeholder="metalhead@abismo.com"
-                                    class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
-                                >
+                               <input type="email" 
+                                   id="email" 
+                                   placeholder="tu@correo.com" 
+                                   required aria-label="Correo electrónico" 
+                                   class="w-full bg-metal-gray border border-white/10 rounded-lg px-4 py-3 text-white font-mono focus:outline-none focus:border-metal-accent transition-colors">
                             </div>
                             <div class="space-y-2">
                                 <label class="block text-xs font-mono text-metal-accent uppercase">Número Telefónico</label>
