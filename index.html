@@ -524,11 +524,18 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "FORJANDO REGISTRO...";
 
+// Obtenemos las referencias de forma segura
+const nameInput = document.getElementById('name') || document.getElementById('firstName');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone');
+const interestInput = document.getElementById('interest');
+
 const leadData = {
-    name: document.getElementById('name')?.value || "No proporcionado",
-    email: document.getElementById('email')?.value || "No proporcionado",
-    phone: document.getElementById('phone')?.value || "Sin teléfono",
-    interest: document.getElementById('interest')?.value || "General",
+    // Usamos el valor si el input existe, si no, ponemos un texto por defecto
+    name: nameInput ? nameInput.value : "Usuario sin nombre",
+    email: emailInput ? emailInput.value : "Sin correo",
+    phone: phoneInput ? phoneInput.value : "No aplica",
+    interest: interestInput ? interestInput.value : "General",
     timestamp: serverTimestamp(),
     userId: userUid
 };
