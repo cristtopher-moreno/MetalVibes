@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Vibes - Regalos de Metal Puro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metal-black': '#0a0a0a',
+                        'metal-gray': '#121212',
+                        'metal-accent': '#a78bfa',
+                        'metal-highlight': '#c4b5fd',
+                        'metal-silver': '#e2e8f0',
+                        'metal-secondary': '#4c1d95',
+                    },
+                    fontFamily: {
+                        'display': ['Anton', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .metal-grid {
+            background-image: radial-gradient(circle at 2px 2px, rgba(167, 139, 250, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .fantasy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.15) 0%, transparent 70%);
+        }
+        .metal-glow { box-shadow: 0 0 20px rgba(167, 139, 250, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen bg-metal-black text-metal-silver font-sans overflow-x-hidden selection:bg-metal-accent selection:text-metal-black">
+    
+    <nav class="fixed top-0 w-full z-50 bg-metal-black/90 backdrop-blur-md border-b border-metal-accent/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <span class="font-display text-2xl tracking-tighter uppercase text-metal-accent">METAL VIBES</span>
+                <a href="#contact" class="bg-metal-accent text-metal-black px-6 py-2 font-display text-sm hover:bg-white transition-all uppercase">Únete a la Horda</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 metal-grid">
+        <div class="absolute inset-0 fantasy-gradient pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10 text-center lg:text-left">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-6xl md:text-8xl leading-none mb-6 font-display uppercase italic">FORJA TU <span class="text-metal-accent">ESTILO</span></h1>
+                    <p class="text-xl text-metal-silver/70 mb-10 leading-relaxed">Accesorios y reliquias diseñadas para el alma metalera.</p>
+                    <a href="#contact" class="inline-block bg-metal-accent text-metal-black px-10 py-5 font-display text-2xl hover:bg-white transition-all shadow-lg uppercase">Quiero mi accesorio</a>
+                </div>
+                <div class="hidden lg:block">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1000&auto=format&fit=crop" alt="Accesorios Metal" class="rounded-3xl border-2 border-metal-accent/20 opacity-60 metal-glow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Motivadora -->
+    <section class="py-20 bg-metal-secondary/10 border-y border-metal-accent/10 text-center px-4">
+        <h2 class="text-4xl md:text-5xl mb-6 font-display uppercase italic text-metal-accent">Calidad que resiste el pogo.</h2>
+        <p class="text-lg text-metal-silver/60 max-w-2xl mx-auto italic">"No vendemos moda, vendemos armaduras para la vida cotidiana."</p>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="py-20 bg-metal-black px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="bg-metal-gray p-6 border border-metal-accent/5 rounded-xl">
+                <p class="italic text-metal-silver/80 mb-4">"El anillo es indestructible. El acero es de verdad."</p>
+                <p class="font-display text-metal-accent text-sm uppercase">Erik V.</p>
+            </div>
+            <div class="bg-metal-gray p-6 border border-metal-accent/5 rounded-xl">
+                <p class="italic text-metal-silver/80 mb-4">"La decoración de mi cuarto cambió totalmente. Es brutal."</p>
+                <p class="font-display text-metal-accent text-sm uppercase">Carla M.</p>
+            </div>
+            <div class="bg-metal-gray p-6 border border-metal-accent/5 rounded-xl">
+                <p class="italic text-metal-silver/80 mb-4">"Los parches tienen un bordado increíble. Muy recomendados."</p>
+                <p class="font-display text-metal-accent text-sm uppercase">Ivan T.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario -->
+    <section id="contact" class="py-24 metal-grid px-4">
+        <div class="max-w-xl mx-auto bg-metal-gray p-8 md:p-12 border-2 border-metal-accent/20 rounded-[2.5rem]">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-display uppercase">Únete a la Élite</h2>
+                <p class="text-metal-accent font-mono text-xs uppercase tracking-widest">Registra tus datos</p>
+            </div>
+
+            <form id="metal-form" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input required type="text" id="firstName" placeholder="Nombres" class="w-full bg-metal-black border border-metal-accent/10 p-4 focus:border-metal-accent outline-none text-metal-silver rounded-xl">
+                    <input required type="text" id="lastName" placeholder="Apellidos" class="w-full bg-metal-black border border-metal-accent/10 p-4 focus:border-metal-accent outline-none text-metal-silver rounded-xl">
+                </div>
+                <input required type="email" id="email" placeholder="Correo Electrónico" class="w-full bg-metal-black border border-metal-accent/10 p-4 focus:border-metal-accent outline-none text-metal-silver rounded-xl">
+                <input required type="tel" id="phone" placeholder="Teléfono / WhatsApp" class="w-full bg-metal-black border border-metal-accent/10 p-4 focus:border-metal-accent outline-none text-metal-silver rounded-xl">
+                
+                <select id="interest" class="w-full bg-metal-black border border-metal-accent/10 p-4 focus:border-metal-accent outline-none text-metal-silver rounded-xl">
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Decoracion">Decoración de Cueva</option>
+                    <option value="Instrumentos">Instrumentos Personalizados</option>
+                    <option value="Ropa">Ropa y Parches</option>
+                </select>
+
+                <button type="submit" id="submit-btn" class="w-full bg-metal-accent text-metal-black py-5 font-display text-2xl hover:bg-white transition-all rounded-xl uppercase shadow-lg">
+                    Registrarme
+                </button>
+                <p id="feedback-msg" class="text-center font-mono text-sm hidden py-2"></p>
+            </form>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Configuración oficial provista por el usuario
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0NxZzqJX7oIJhtnJXGLAJHYB-4K14dFw",
+            authDomain: "metalvibes-d6d11.firebaseapp.com",
+            projectId: "metalvibes-d6d11",
+            storageBucket: "metalvibes-d6d11.firebasestorage.app",
+            messagingSenderId: "771764239979",
+            appId: "1:771764239979:web:4b9facf4cb4325d39c3b2e"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        const appId = "metalvibes-d6d11"; // ID del Proyecto Firebase oficial
+
+        let userUid = null;
+
+        // Intentamos autenticar de forma anónima
+        signInAnonymously(auth).then((cred) => {
+            userUid = cred.user.uid;
+            console.log("Autenticación Anónima Exitosa. UID del Usuario:", userUid);
+        }).catch((err) => {
+            console.error("Error crítico de Autenticación en Firebase:", err);
+            showFeedback("Fallo de Autenticación. Asegúrate de tener habilitado 'Anónimo' en la pestaña de Sign-In Method de Firebase.", "text-red-500");
+        });
+
+        const form = document.getElementById('metal-form');
+        const feedback = document.getElementById('feedback-msg');
+        const btn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!userUid) {
+                console.warn("Se intentó registrar pero no hay una sesión activa con Firebase Auth.");
+                showFeedback("Estableciendo conexión segura... Inténtalo de nuevo en 3 segundos.", "text-yellow-500");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "REGISTRANDO...";
+
+            const leadData = {
+                nombres: document.getElementById('firstName').value,
+                apellidos: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('phone').value,
+                interes: document.getElementById('interest').value,
+                fecha: serverTimestamp(),
+                uid: userUid
+            };
+
+            try {
+                // Ruta estructurada según la convención del sistema
+                const targetCollection = collection(db, 'artifacts', appId, 'public', 'data', 'leads');
+                console.log("Enviando documento a Firestore en la colección:", targetCollection.path);
+                
+                await addDoc(targetCollection, leadData);
+                console.log("Documento insertado correctamente.");
+                
+                showFeedback("¡REGISTRO EXITOSO! BIENVENIDO.", "text-metal-accent");
+                form.reset();
+            } catch (error) {
+                console.error("Error al registrar en Firestore:", error);
+                
+                if (error.code === 'permission-denied') {
+                    showFeedback("Permiso denegado por Firestore. Por favor, cambia tus reglas de seguridad a modo público o lectura/escritura libre.", "text-red-500");
+                } else {
+                    showFeedback(`Error: ${error.message}`, "text-red-500");
+                }
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Registrarme";
+            }
+        });
+
+        function showFeedback(msg, color) {
+            feedback.innerText = msg;
+            feedback.className = `text-center font-mono text-sm mt-4 ${color}`;
+            feedback.classList.remove('hidden');
+            setTimeout(() => feedback.classList.add('hidden'), 8000);
+        }
+    </script>
+</body>
+</html>
