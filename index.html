@@ -9,28 +9,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'metal-black': '#0a0a0a',
-                    'metal-gray': '#121212',
-                    'metal-accent': '#a78bfa',
-                    'metal-highlight': '#c4b5fd',
-                    'metal-silver': '#e2e8f0',
-                    'metal-secondary': '#4c1d95',
-                },
-                fontFamily: {
-                    'display': ['Anton', 'sans-serif'],
-                    'mono': ['JetBrains Mono', 'monospace'],
-                    'sans': ['Inter', 'sans-serif'],
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metal-black': '#0a0a0a',
+                        'metal-gray': '#121212',
+                        'metal-accent': '#a78bfa',
+                        'metal-highlight': '#c4b5fd',
+                        'metal-silver': '#e2e8f0',
+                        'metal-secondary': '#4c1d95',
+                    },
+                    fontFamily: {
+                        'display': ['Anton', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
                 }
             }
-        }
-    }
-</script>
-        }
         }
     </script>
     <style>
@@ -118,7 +115,7 @@
                 <div class="relative">
                     <div class="relative z-10 aspect-[2/1] rounded-2xl overflow-hidden metal-border metal-glow bg-metal-gray/50">
                         <img 
-                            src="https://images.unsplash.com/photo-1598518141892-06ba05f87bb7?q=80&w=1000&auto=format&fit=crop" 
+                            src="amuleto.png" 
                             alt="Metal Vibes Illustration" 
                             class="w-full h-full object-cover p-0 hover:scale-105 transition-transform duration-700"
                         >
@@ -147,7 +144,8 @@
                         <div class="relative bg-metal-black rounded-xl overflow-hidden border border-white/5 aspect-[2/1] flex items-center justify-center">
                             <img 
                                 src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1000&auto=format&fit=crop" 
-                                alt="Metal Craftsmanship" 
+                                alt="Metal Craftsmanship"
+                                crossorigin="anonymous"
                                 class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[1.02]"
                             >
                             <div class="absolute inset-0 bg-gradient-to-r from-metal-black/60 to-transparent"></div>
@@ -290,19 +288,25 @@
                     <form id="contact-form" class="space-y-6 relative z-10">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="block text-xs font-mono text-metal-accent uppercase">Nombres</label>
-                               <input type="text" 
-                                   id="name" 
-                                   placeholder="Tu nombre metalero" 
-                                   required aria-label="Nombre completo" 
-                                   class="w-full bg-metal-gray border border-white/10 rounded-lg px-4 py-3 text-white font-mono focus:outline-none focus:border-metal-accent transition-colors">
+                                <label for="firstName" class="block text-xs font-mono text-metal-accent uppercase">Nombres</label>
+                                <input 
+                                    id="firstName"
+                                    name="firstName"
+                                    required
+                                    type="text"
+                                    autocomplete="given-name"
+                                    placeholder="Ej: Lemmy"
+                                    class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
+                                >
                             </div>
                             <div class="space-y-2">
-                                <label class="block text-xs font-mono text-metal-accent uppercase">Apellidos</label>
+                                <label for="lastName" class="block text-xs font-mono text-metal-accent uppercase">Apellidos</label>
                                 <input 
                                     id="lastName"
+                                    name="lastName"
                                     required
-                                    type="text" 
+                                    type="text"
+                                    autocomplete="family-name"
                                     placeholder="Ej: Kilmister"
                                     class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
                                 >
@@ -311,19 +315,25 @@
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="block text-xs font-mono text-metal-accent uppercase">Correo del Abismo</label>
-                               <input type="email" 
-                                   id="email" 
-                                   placeholder="tu@correo.com" 
-                                   required aria-label="Correo electrónico" 
-                                   class="w-full bg-metal-gray border border-white/10 rounded-lg px-4 py-3 text-white font-mono focus:outline-none focus:border-metal-accent transition-colors">
+                                <label for="email" class="block text-xs font-mono text-metal-accent uppercase">Correo del Abismo</label>
+                                <input 
+                                    id="email"
+                                    name="email"
+                                    required
+                                    type="email"
+                                    autocomplete="email"
+                                    placeholder="metalhead@abismo.com"
+                                    class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
+                                >
                             </div>
                             <div class="space-y-2">
-                                <label class="block text-xs font-mono text-metal-accent uppercase">Número Telefónico</label>
+                                <label for="phone" class="block text-xs font-mono text-metal-accent uppercase">Número Telefónico</label>
                                 <input 
                                     id="phone"
+                                    name="phone"
                                     required
-                                    type="tel" 
+                                    type="tel"
+                                    autocomplete="tel"
                                     placeholder="Ej: +54 911 1234 5678"
                                     class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver placeholder:text-metal-silver/20 rounded-lg"
                                 >
@@ -331,8 +341,8 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="block text-xs font-mono text-metal-accent uppercase">Interés Principal</label>
-                            <select id="interest" class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver rounded-lg">
+                            <label for="interest" class="block text-xs font-mono text-metal-accent uppercase">Interés Principal</label>
+                            <select id="interest" name="interest" autocomplete="off" class="w-full bg-metal-black border border-metal-accent/20 px-4 py-3 focus:border-metal-accent outline-none transition-colors text-metal-silver rounded-lg">
                                 <option value="Accesorios">Accesorios (Anillos, Collares)</option>
                                 <option value="Decoración">Decoración de Cueva</option>
                                 <option value="Instrumentos">Instrumentos Personalizados</option>
@@ -397,18 +407,18 @@
 
         // Configuración oficial Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyD0NxZzqJX7oIJhtnJXGLAJHYB-4K14dFw",
-            authDomain: "metalvibes-d6d11.firebaseapp.com",
-            projectId: "metalvibes-d6d11",
-            storageBucket: "metalvibes-d6d11.firebasestorage.app",
-            messagingSenderId: "771764239979",
-            appId: "1:771764239979:web:4b9facf4cb4325d39c3b2e"
+            apiKey: "AIzaSyDjPKC3iG4-PgYzOsNkhUC9X8NXE3q-uD0",
+            authDomain: "metalvibes-344f0.firebaseapp.com",
+            projectId: "metalvibes-344f0",
+            storageBucket: "metalvibes-344f0.firebasestorage.app",
+            messagingSenderId: "736867301433",
+            appId: "1:736867301433:web:3a89fd97836dc9b311f5e8"
         };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = "metalvibes-d6d11";
+        const appId = "metalvibes-344f0";
 
         let userUid = null;
 
@@ -524,21 +534,15 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "FORJANDO REGISTRO...";
 
-// Obtenemos las referencias de forma segura
-const nameInput = document.getElementById('name') || document.getElementById('firstName');
-const emailInput = document.getElementById('email');
-const phoneInput = document.getElementById('phone');
-const interestInput = document.getElementById('interest');
-
-const leadData = {
-    // Usamos el valor si el input existe, si no, ponemos un texto por defecto
-    name: nameInput ? nameInput.value : "Usuario sin nombre",
-    email: emailInput ? emailInput.value : "Sin correo",
-    phone: phoneInput ? phoneInput.value : "No aplica",
-    interest: interestInput ? interestInput.value : "General",
-    timestamp: serverTimestamp(),
-    userId: userUid
-};
+            const leadData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                interest: document.getElementById('interest').value,
+                timestamp: serverTimestamp(),
+                userId: userUid
+            };
 
             try {
                 // Registro seguro en la ruta específica del sistema
