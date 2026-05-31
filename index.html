@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metal Vibes - Regalos de Metal Puro</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- DNS prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Fuentes con display=swap para evitar FOIT y reducir bloqueo -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preload imagen LCP -->
+    <link rel="preload" as="image" href="amuleto.png">
+
     <script>
         tailwind.config = {
             theme: {
@@ -40,6 +51,15 @@
         }
         .metal-glow { box-shadow: 0 0 20px rgba(167, 139, 250, 0.1); }
         .metal-border { border: 1px solid rgba(167, 139, 250, 0.2); }
+        /* Evitar non-composited animations: usar transform y opacity únicamente */
+        .hover\:scale-105:hover,
+        .group-hover\:scale-\[1\.02\]:hover {
+            will-change: transform;
+        }
+        /* Reducir blur costoso en móviles */
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-metal-black text-metal-silver font-sans overflow-x-hidden selection:bg-metal-accent selection:text-metal-black">
@@ -116,7 +136,12 @@
                     <div class="relative z-10 aspect-[2/1] rounded-2xl overflow-hidden metal-border metal-glow bg-metal-gray/50">
                         <img 
                             src="amuleto.png" 
-                            alt="Metal Vibes Illustration" 
+                            alt="Metal Vibes Illustration"
+                            width="800"
+                            height="400"
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
                             class="w-full h-full object-cover p-0 hover:scale-105 transition-transform duration-700"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-metal-black/40 via-transparent to-transparent pointer-events-none"></div>
@@ -127,7 +152,7 @@
                         </div>
                     </div>
                     
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-metal-accent/20 blur-3xl rounded-full animate-pulse"></div>
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-metal-accent/20 blur-3xl rounded-full"></div>
                     <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-metal-secondary/20 blur-3xl rounded-full"></div>
                 </div>
             </div>
@@ -143,8 +168,12 @@
                         <div class="absolute -inset-1 bg-gradient-to-r from-metal-accent via-metal-highlight to-metal-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                         <div class="relative bg-metal-black rounded-xl overflow-hidden border border-white/5 aspect-[2/1] flex items-center justify-center">
                             <img 
-                                src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1000&auto=format&fit=crop" 
+                                src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=800&auto=format&fit=crop" 
                                 alt="Metal Craftsmanship"
+                                width="800"
+                                height="400"
+                                loading="lazy"
+                                decoding="async"
                                 crossorigin="anonymous"
                                 class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[1.02]"
                             >
@@ -399,8 +428,8 @@
         </div>
     </footer>
 
-    <!-- Lógica Unificada libre de 'unload' event listeners -->
-    <script type="module">
+    <!-- Firebase: diferido para no bloquear render -->
+    <script type="module" defer>
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -418,7 +447,6 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = "metalvibes-344f0";
 
         let userUid = null;
 
@@ -546,7 +574,7 @@
 
             try {
                 // Registro seguro en la ruta específica del sistema
-                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'leads');
+                const colRef = collection(db, 'leads');
                 await addDoc(colRef, leadData);
 
                 formContainer.classList.add('hidden');
